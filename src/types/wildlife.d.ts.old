@@ -1,0 +1,513 @@
+// /**
+//  * This just contains a reference to a sandbox object in the outliner and can be used as a parameter in subsequent function calls.
+//  */
+// declare class WLSandboxObject {}
+
+// /**
+//  * The Vector contains three components x, y and z, one for each axis.
+//  */
+// declare class WLVector {
+//   /**
+//    * The X component of the vector
+//    */
+//   x: number;
+
+//   /**
+//    * The Y component of the vector
+//    */
+//   y: number;
+
+//   /**
+//    * The Z component of the vector
+//    */
+//   z: number;
+// }
+
+// /**
+//  * The Color contains four components r, g, b and a, one for each color channel.
+//  */
+// declare class WLColor {
+//   /**
+//    * The red component of the color
+//    */
+//   r: number;
+
+//   /**
+//    * The green component of the color
+//    */
+//   g: number;
+
+//   /**
+//    * The blue component of the color
+//    */
+//   b: number;
+
+//   /**
+//    * The alpha component of the color
+//    */
+//   a: number;
+// }
+
+// declare class WLRayCastHit {
+//   did_hit: boolean;
+//   hit_point: WLVector;
+//   hit_normal: WLVector;
+//   time: number;
+//   distance: number;
+//   hit_sandbox_object: WLSandboxObject;
+// }
+
+// /**
+//  * A VectorString is the text representation of a Vector, used primarily for setting option values in the event system. This is only one part of the full OptionVectorString, which would be needed to be able to set the event system values.
+//  *
+//  * It will have the format
+//  *
+//  * "x=[xValue],y=[yValue],z=[zValue]"
+//  *
+//  * so for example
+//  *
+//  * "x=1.0,y=2.0,z=3.0"
+//  */
+// declare class WLVectorString extends String {}
+
+// /**
+//  * An OptionVectorString is the text representation of a Vector together with an option name, used primarily for setting option values in the event system.
+//  * 
+//  * It will have the format
+//  * 
+//  * "[optionName];x=[xValue],y=[yValue],z=[zValue]"
+//  * 
+//  * so for example
+//  * 
+//  * "StartLocation;x=1.0,y=2.0,z=3.0"
+//  */
+// declare class WLOptionVectorString extends String {}
+
+// /**
+//  * A ColorString is the text representation of a Color, used primarily for setting option values in the event system. This is only one part of the full OptionColorString, which would be needed to be able to set the event system values.
+//  * 
+//  * It will have the format
+//  * 
+//  * "r=[rValue],g=[gValue],b=[bValue],a=[aValue]"
+//  * 
+//  * so for example
+//  * 
+//  * "r=0.5,g=0.2,b=0.75,a=1.0"
+//  */
+// declare class WLColorString extends String {}
+
+// /**
+//  * An OptionColorString is the text representation of a Color together with an option name, used primarily for setting option values in the event system.
+//  * 
+//  * It will have the format
+//  * 
+//  * "[optionName];r=[rValue],g=[gValue],b=[bValue],a=[aValue]"
+//  * 
+//  * so for example
+//  * 
+//  * "color;r=0.5,g=0.2,b=0.75,a=1.0"
+//  */
+// declare class WLOptionColorString extends String {}
+
+// type Primitives = number | string | boolean | undefined;
+
+// /**
+//  * Any type of value that can be set as value on the event system.
+//  */
+// type WLValue = Primitives | WLColorString | WLOptionColorString | WLVectorString | WLOptionVectorString;
+
+// /**
+//  * Data that can be stringified in to json. 
+//  */
+// type JsonData = {[key: string]: JsonData} | WLValue;
+
+// /**
+//  * Returns a reference to the first sandbox object in the outliner named 'objectName'. Since this function potentially needs to iterate over lots of sandbox objects, it is better to cache the return value in a variable at game start and then using the variable in subsequent function calls
+//  * @param objectName The name of the object.
+//  */
+// declare function wl_get_object (objectName: string): WLSandboxObject;
+
+// /**
+//  * Returns a reference to the Lua sandbox object that is currently executing this code.
+//  */
+// declare function wl_get_object_self (): WLSandboxObject;
+
+// /**
+//  * Similarly to wl_get_object, this returns a sandbox object with the name 'objectName', but it will only search for a sandbox object that is parented below the given 'sandboxObject'. Since this function potentially needs to iterate over lots of sandbox objects, it is better to cache the return value in a variable at game start and then using the variable in subsequent function calls
+//  * @param objectName The name of the object
+//  * @param sandboxObject The parent object
+//  */
+// declare function wl_get_object_below (objectName: string, sandboxObject: WLSandboxObject): WLSandboxObject;
+
+// /**
+//  * This function can be used to set the world position of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the position.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_position (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * This function can be used to set the world rotation of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the rotation.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_rotation (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * This function can be used to set the world scale of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the scale.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_scale (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * This function can be used to set the position relative to the parent of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the position.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_local_position (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * This function can be used to set the rotation relative to the parent of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the rotation.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_local_rotation (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * This function can be used to set the scale relative to the parent of a sandbox object directly.
+//  * @param sandboxObject The object on which to set the scale.
+//  * @param args Either a WLVector or a x, y and z value.
+//  */
+// declare function wl_set_object_local_scale (sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+
+// /**
+//  * Returns the world position of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the position.
+//  */
+// declare function wl_get_object_position (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the world rotation of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the rotation.
+//  */
+// declare function wl_get_object_rotation (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the world scale of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the scale.
+//  */
+// declare function wl_get_object_scale (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the relative position to the parent of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the relative position.
+//  */
+// declare function wl_get_object_local_position (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the rotation position to the parent of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the rotation position.
+//  */
+// declare function wl_get_object_local_rotation (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the scale position to the parent of the given 'sandboxObject' as a Vector.
+//  * @param sandboxObject The object of which to get the scale position.
+//  */
+// declare function wl_get_object_local_scale (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Dispatches an event just like any other prop can using the event system. As the parameters suggest, 'eventName' would be the name of the event to be fired, and 'eventValue' would be the value (or parameter) of the event.
+//  * @param eventName The name of the event.
+//  * @param eventValue The value of the event.
+//  */
+// declare function wl_dispatch_event (eventName: string, eventValue: WLValue): void;
+
+// /**
+//  * Dispatches an event just like any other prop can using the event system, except it will only send it to 'sandboxObject'. As the parameters suggest, 'eventName' would be the name of the event to be fired, and 'eventValue' would be the value (or parameter) of the event.
+//  * @param eventName The name of the event.
+//  * @param eventValue The value of the event.
+//  * @param sandboxObject The object on which to dispatch the event.
+//  */
+// declare function wl_dispatch_event_to_object (eventName: string, eventValue: WLValue, sandboxObject: WLSandboxObject): void;
+
+// /**
+//  * When using the event system, some receivers require option vector strings as parameters (for example, setting the start value on a Transformer prop). This is just a helper function to create only the vector part of an event parameter. If you want the full option vector string, see wl_make_option_vector_string().
+//  * @param args Either a WLVector or a x, y and z value to be converted to a WLVectorString.
+//  */
+// declare function wl_make_vector_string (...args: [x: number, y: number, z: number] | [vector: WLVector]): WLVectorString;
+
+// /**
+//  * When using the event system, some receivers require option vector strings as parameters (for example, setting the start value on a Transformer prop). This is just a helper function to create these option vector strings.
+//  * @param optionName The option name.
+//  * @param args Either a WLVector or a x, y and z value to be converted to a WLVectorString.
+//  */
+// declare function wl_make_option_vector_string (optionName: string, ...args: [x: number, y: number, z: number] | [vector: WLVector]): WLOptionVectorString;
+
+// /**
+//  * When using the event system, some receivers require option color strings as parameters (for example, setting the color of a prototype shape). This is just a helper function to create only the color part of an event parameter. If you want the full option color string, see wl_make_option_color_string().
+//  * @param args Either a WLColor or a r, g, b and a value to be converted to a WLColorString.
+//  */
+// declare function wl_make_color_string (...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLColorString;
+
+// /**
+//  * When using the event system, some receivers require option color strings as parameters (for example, setting the color on a prototype shape). This is just a helper function to create these option color strings.
+//  * @param optionName The option name.
+//  * @param args Either a WLColor or a r, g, b and a value to be converted to a WLColorString.
+//  */
+// declare function wl_make_option_color_string (optionName: string, ...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLOptionColorString;
+
+// /**
+//  * Unlike wl_make_vector_string, this function does not create a single string containing all values. Instead, it returns a table with x, y and z set to the given parameter values.
+//  * @param x The X component of the vector
+//  * @param y The Y component of the vector
+//  * @param z The Z component of the vector
+//  */
+// declare function wl_make_vector (x: number, y: number, z: number): WLVector;
+
+// /**
+//  * Unlike wl_make_color_string, this function does not create a single string containing all values. Instead, it returns a table with r, g, b and a set to the given parameter values.
+//  * @param r The red component of the color
+//  * @param g The green component of the color
+//  * @param b The blue component of the color
+//  * @param a The alpha component of the color
+//  */
+// declare function wl_make_color (r: number, g: number, b: number, a: number): WLColor;
+
+// /**
+//  * This will cast an ray from the given location 'originVector' in the direction of 'directionVector' with a max distance of 'maxDistance'. If the ray hits anything on it's path, it will add useful hit information into a the returned RayCastHit table.
+//  * @param originVector The position from which to cast the ray.
+//  * @param directionVector The direction in which to cast the ray.
+//  * @param maxDistance The maximum distance in which to check for collisions.
+//  */
+// declare function wl_raycast (originVector: WLVector, directionVector: WLVector, maxDistance: WLVector): WLRayCastHit;
+
+// /**
+//  * This functions return the time since the last frame, in seconds. This is useful if you want to build functionality that is not dependent on the framerate, like moving an object forwards by a constant value.
+//  */
+// declare function wl_get_delta_time (): number;
+
+// /**
+//  * Returns the current player object.
+//  */
+// declare function wl_get_player_object (): WLSandboxObject;
+
+// /**
+//  * Returns the name of the sandbox object. This is the same name as the one you can see in the outliner.
+//  * @param sandboxObject The object of which to get the name.
+//  */
+// declare function wl_get_object_name (sandboxObject: WLSandboxObject): string;
+
+// /**
+//  * Returns the forward direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the forward direction vector.
+//  */
+// declare function wl_get_object_forward_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the right direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the right direction vector.
+//  */
+// declare function wl_get_object_right_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the up direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the up direction vector.
+//  */
+// declare function wl_get_object_up_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the back direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the back direction vector.
+//  */
+// declare function wl_get_object_back_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the left direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the left direction vector.
+//  */
+// declare function wl_get_object_left_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Returns the down direction vector of the given 'sandboxObject'.
+//  * @param sandboxObject The object of which to get the down direction vector.
+//  */
+// declare function wl_get_object_down_vector (sandboxObject: WLSandboxObject): WLVector;
+
+// /**
+//  * Adds 'vectorA' and 'vectorB' together component wise, or alternatively adds 'vectorA' and 'numB' together, meaning 'numB' is added to all x, y and z components of the vector.
+//  * @param vectorA The vector to which to add the 2nd value.
+//  * @param vectorB Either a number or vector which will be added to the first value.
+//  */
+// declare function wl_vector_add (vectorA: WLVector, b: WLVector | number): WLVector;
+
+// /**
+//  * Subtracts 'vectorB' from 'vectorA' component wise, or alternatively subtracts 'numB' from 'vectorA', meaning 'numB' is subtracted from all x, y and z components of the vector.
+//  * @param vectorA The vector from which to subtract the 2nd value.
+//  * @param vectorB Either a number or vector which will be subtracted from the first value.
+//  */
+// declare function wl_vector_subtract (vectorA: WLVector, vectorB: WLVector | number): WLVector;
+
+// /**
+//  * Multiplies 'vectorA' and 'vectorB' together component wise, or alternatively multiplies 'vectorA' and 'numB' together, meaning each x, y and z component is multiplied with 'numB'.
+//  * @param vectorA The vector to multiply by the 2nd value.
+//  * @param vectorB Either a number or vector the first value will be multiplied by.
+//  */
+// declare function wl_vector_multiply (vectorA: WLVector, vectorB: WLVector | number): WLVector;
+
+// /**
+//  * Divides 'vectorB' from 'vectorA' component wise, or alternatively divides 'numB' from 'vectorA', meaning 'numB' is divided from all x, y and z components of the vector.
+//  * @param vectorA The vector to divide by the 2nd value.
+//  * @param vectorB Either a number or vector which the first value will be divided by.
+//  */
+// declare function wl_vector_divide (vectorA: WLVector, vectorB: WLVector | number): WLVector;
+
+// /**
+//  * Normalizes the given vector 'vector', meaning the direction will remain the same, but the length of the vector will be exaclty 1 centimeter
+//  * @param vector The vector to normalize.
+//  */
+// declare function wl_vector_normalize (vector: WLVector): WLVector;
+
+// /**
+//  * Calculates the dot product between 'vectorA' and 'vectorB', meaning all x, y, z components are multiplied component wise and the resulting components are summed together.
+//  * @param vectorA The first vector to be used to calculate the dot product.
+//  * @param vectorB The second vector to be used to calculate the dot product.
+//  */
+// declare function wl_vector_dot (vectorA: WLVector, vectorB: WLVector): number;
+
+// /**
+//  * Calculates the cross product between 'vectorA' and 'vectorB', meaning it finds a vector that is perpendicular to both 'vectorA' and 'vectorB'.
+//  * @param vectorA The first vector to be used to calculate the cross product.
+//  * @param vectorB The second vector to be used to calculate the cross product.
+//  */
+// declare function wl_vector_cross (vectorA: WLVector, vectorB: WLVector): WLVector;
+
+// /**
+//  * Calculates the reflected vector of 'vectorA' bouncing off a surface with normal vector 'vectorB'.
+//  * @param vectorA The vector of which to calculate the reflected vector.
+//  * @param vectorB The normal vector.
+//  */
+// declare function wl_vector_reflect (vectorA: WLVector, vectorB: WLVector): WLVector;
+
+// /**
+//  * Returns the length of the vector in centimeters.
+//  * @param vector The vector of which to get the length.
+//  */
+// declare function wl_vector_length (vector: WLVector): number;
+
+// /**
+//  * Projects 'vectorA' onto 'vectorB' and returns the projected vector.
+//  * @param vectorA The vector on which to project the second vector.
+//  * @param vectorB The vector to reflect on the first vector.
+//  */
+// declare function wl_vector_project (vectorA: WLVector, vectorB: WLVector): WLVector;
+
+// /**
+//  * Projects 'vectorA' onto a plane with normal 'vectorB' and returns the projected vector.
+//  * @param vectorA The vector which to project on a plane with vectorB
+//  * @param vectorB 
+//  */
+// /**
+//  * Projects 'vectorA' onto a plane with normal 'vectorB' and returns the projected vector.
+//  * @param vectorA - The vector to be projected.
+//  * @param vectorB - The normal vector of the plane.
+//  * @returns The projected vector.
+//  */
+// declare function wl_vector_plane_project(vectorA: WLVector, vectorB: WLVector): WLVector;
+
+// /**
+//  * Prints a vector to the log.
+//  * @param vector - The vector to be printed.
+//  */
+// declare function wl_print_vector(vector: WLVector): void;
+
+// /**
+//  * Prints a color to the log.
+//  * @param color - The color to be printed.
+//  */
+// declare function wl_print_color(color: WLColor): void;
+
+// /**
+//  * Prints the entire table to the log using JSON syntax.
+//  * @param table - The table to be printed.
+//  */
+// declare function wl_print_table(table: object): void;
+
+// /**
+//  * Returns the float value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The float value of the option.
+//  */
+// declare function wl_get_object_float_option(sandboxObject: WLSandboxObject, optionName: string): number;
+
+// /**
+//  * Returns the integer value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The integer value of the option.
+//  */
+// declare function wl_get_object_integer_option(sandboxObject: WLSandboxObject, optionName: string): number;
+
+// /**
+//  * Returns the string value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The string value of the option.
+//  */
+// declare function wl_get_object_string_option(sandboxObject: WLSandboxObject, optionName: string): string;
+
+// /**
+//  * Returns the boolean value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The boolean value of the option.
+//  */
+// declare function wl_get_object_bool_option(sandboxObject: WLSandboxObject, optionName: string): boolean;
+
+// /**
+//  * Returns the vector value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The vector value of the option.
+//  */
+// declare function wl_get_object_vector_option(sandboxObject: WLSandboxObject, optionName: string): WLVector;
+
+// /**
+//  * Returns the color value of the specified option for the given sandbox object.
+//  * @param sandboxObject - The sandbox object.
+//  * @param optionName - The name of the option.
+//  * @returns The color value of the option.
+//  */
+// declare function wl_get_object_color_option(sandboxObject: WLSandboxObject, optionName: string): WLColor;
+
+// declare function wl_set_object_float_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_set_object_integer_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_set_object_string_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_set_object_bool_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_set_object_vector_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_set_object_color_option (sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+// declare function wl_get_object_parent (sandboxObject: WLSandboxObject): WLSandboxObject;
+// declare function wl_get_object_self_parent (): WLSandboxObject;
+// declare function wl_get_object_children (sandboxObject: WLSandboxObject): WLSandboxObject[];
+// declare function wl_get_object_self_children (): WLSandboxObject[];
+// declare function wl_get_object_children_recursive (sandboxObject: WLSandboxObject): WLSandboxObject[];
+// declare function wl_get_object_self_children_recursive (): WLSandboxObject[];
+// declare function wl_get_objects (objectName: string): WLSandboxObject[];
+// declare function wl_add_event_to_dispatcher (sandboxObject: WLSandboxObject, dispatcherID, eventName: string, eventValue: WLValue): void;
+// declare function wl_remove_event_from_dispatcher (sandboxObject: WLSandboxObject, dispatcherID, eventName: string): void;
+// declare function wl_add_event_to_receiver (sandboxObject: WLSandboxObject, dispatcherID, eventName: string, eventValue: WLValue): void;
+// declare function wl_remove_event_from_receiver (sandboxObject: WLSandboxObject, dispatcherID, eventName: string): void;
+// declare function wl_get_object_visibility (sandboxObject: WLSandboxObject): boolean;
+// declare function wl_set_object_visibility (sandboxObject: WLSandboxObject, newVisibility: boolean): void;
+// declare function wl_get_object_dispatchers_enabled (sandboxObject: WLSandboxObject): boolean;
+// declare function wl_set_object_dispatchers_enabled (sandboxObject: WLSandboxObject, newEnabled: boolean): void;
+// declare function wl_get_object_receivers_enabled (sandboxObject: WLSandboxObject): boolean;
+// declare function wl_set_object_receivers_enabled (sandboxObject: WLSandboxObject, newEnabled: boolean);
+// declare function wl_execute_delayed (delaySeconds: number, luaCodeString: string);
+// declare function wl_data_save (data: JsonData, fileName: string): boolean;
+// declare function wl_data_load (fileName: string): JsonData;
+// declare function wl_data_delete (fileName: string): boolean;
+// declare function wl_data_exists (fileName: string): boolean;
+// declare function wl_load_scene (sceneName: string, loadAdditively: boolean): boolean;
