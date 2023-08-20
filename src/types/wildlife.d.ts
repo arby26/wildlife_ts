@@ -136,7 +136,7 @@ type JsonData = {[key: string]: JsonData} | WLValue;
  * @param objectName - The name of the sandbox object to retrieve.
  * @returns Reference to the sandbox object.
  */
-declare function wl_get_object(objectName: string): WLSandboxObject;
+declare function wl_get_object(this: void, objectName: string): WLSandboxObject;
 
 /**
  * Returns a reference to the Lua sandbox object that is currently executing this code.
@@ -152,7 +152,7 @@ declare function wl_get_object(objectName: string): WLSandboxObject;
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_object_self | View online documentation}
  * @returns Reference to the currently executing Lua prop.
  */
-declare function wl_get_object_self(): WLSandboxObject;
+declare function wl_get_object_self(this: void, ): WLSandboxObject;
 
 /**
  * Similarly to wl_get_object, this returns a sandbox object with the name 'objectName', but it will only search for a sandbox object that is parented below the given 'sandboxObject'. Since this function potentially needs to iterate over lots of sandbox objects, it is better to cache the return value in a variable at game start and then using the variable in subsequent function calls
@@ -181,7 +181,7 @@ declare function wl_get_object_self(): WLSandboxObject;
  * @param sandboxObject - The parent sandbox object.
  * @returns Reference to the sandbox object below the given parent.
  */
-declare function wl_get_object_below(objectName: string, sandboxObject: WLSandboxObject): WLSandboxObject;
+declare function wl_get_object_below(this: void, objectName: string, sandboxObject: WLSandboxObject): WLSandboxObject;
 
 /**
  * This function can be used to set the world position of a sandbox object directly.
@@ -204,7 +204,7 @@ declare function wl_get_object_below(objectName: string, sandboxObject: WLSandbo
  * @param sandboxObject - The sandbox object to set the position for.
  * @param args - Either x, y, and z coordinates, or a vector with x, y, and z components.
  */
-declare function wl_set_object_position(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_position(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * This function can be used to set the world rotation of a sandbox object directly.
@@ -227,7 +227,7 @@ declare function wl_set_object_position(sandboxObject: WLSandboxObject, ...args:
  * @param sandboxObject - The sandbox object to set the rotation for.
  * @param args - Either x, y, and z rotation angles in degrees, or a vector with x, y, and z angles.
  */
-declare function wl_set_object_rotation(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_rotation(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * This function can be used to set the world scale of a sandbox object directly.
@@ -250,7 +250,7 @@ declare function wl_set_object_rotation(sandboxObject: WLSandboxObject, ...args:
  * @param sandboxObject - The sandbox object to set the scale for.
  * @param args - Either x, y, and z scale factors, or a vector with x, y, and z scales.
  */
-declare function wl_set_object_scale(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_scale(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * This function can be used to set the position relative to the parent of a sandbox object directly.
@@ -273,7 +273,7 @@ declare function wl_set_object_scale(sandboxObject: WLSandboxObject, ...args: [x
  * @param sandboxObject - The sandbox object to set the local position for.
  * @param args - Either x, y, and z local coordinates, or a vector with x, y, and z components.
  */
-declare function wl_set_object_local_position(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_local_position(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * This function can be used to set the rotation relative to the parent of a sandbox object directly.
@@ -296,7 +296,7 @@ declare function wl_set_object_local_position(sandboxObject: WLSandboxObject, ..
  * @param sandboxObject - The sandbox object to set the local rotation for.
  * @param args - Either x, y, and z local rotation angles in degrees, or a vector with x, y, and z angles.
  */
-declare function wl_set_object_local_rotation(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_local_rotation(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * This function can be used to set the scale relative to the parent of a sandbox object directly.
@@ -319,7 +319,7 @@ declare function wl_set_object_local_rotation(sandboxObject: WLSandboxObject, ..
  * @param sandboxObject - The sandbox object to set the local scale for.
  * @param args - Either x, y, and z local scale factors, or a vector with x, y, and z scales.
  */
-declare function wl_set_object_local_scale(sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
+declare function wl_set_object_local_scale(this: void, sandboxObject: WLSandboxObject, ...args: [x: number, y: number, z: number] | [vector: WLVector]): void;
 
 /**
  * Returns the world position of the given 'sandboxObject' as a Vector.
@@ -339,7 +339,7 @@ declare function wl_set_object_local_scale(sandboxObject: WLSandboxObject, ...ar
  * @param sandboxObject - The sandbox object to get the world position for.
  * @returns The world position vector.
  */
-declare function wl_get_object_position(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_position(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the world rotation of the given 'sandboxObject' as a Vector.
@@ -359,7 +359,7 @@ declare function wl_get_object_position(sandboxObject: WLSandboxObject): WLVecto
  * @param sandboxObject - The sandbox object to get the world rotation for.
  * @returns The world rotation vector.
  */
-declare function wl_get_object_rotation(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_rotation(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the world scale of the given 'sandboxObject' as a Vector.
@@ -379,7 +379,7 @@ declare function wl_get_object_rotation(sandboxObject: WLSandboxObject): WLVecto
  * @param sandboxObject - The sandbox object to get the world scale for.
  * @returns The world scale vector.
  */
-declare function wl_get_object_scale(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_scale(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the relative position to the parent of the given 'sandboxObject' as a Vector.
@@ -399,7 +399,7 @@ declare function wl_get_object_scale(sandboxObject: WLSandboxObject): WLVector;
  * @param sandboxObject - The sandbox object to get the local position for.
  * @returns The local position vector.
  */
-declare function wl_get_object_local_position(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_local_position(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the relative rotation to the parent of the given 'sandboxObject' as a Vector.
@@ -419,7 +419,7 @@ declare function wl_get_object_local_position(sandboxObject: WLSandboxObject): W
  * @param sandboxObject - The sandbox object to get the local rotation for.
  * @returns The local rotation vector.
  */
-declare function wl_get_object_local_rotation(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_local_rotation(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the relative scale to the parent of the given 'sandboxObject' as a Vector.
@@ -439,7 +439,7 @@ declare function wl_get_object_local_rotation(sandboxObject: WLSandboxObject): W
  * @param sandboxObject - The sandbox object to get the local scale for.
  * @returns The local scale vector.
  */
-declare function wl_get_object_local_scale(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_local_scale(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Dispatches an event just like any other prop can using the event system. As the parameters suggest, 'eventName' would be the name of the event to be fired, and 'eventValue' would be the value (or parameter) of the event.
@@ -455,7 +455,7 @@ declare function wl_get_object_local_scale(sandboxObject: WLSandboxObject): WLVe
  * @param eventName - The name of the event to be fired.
  * @param eventValue - The value or parameter of the event.
  */
-declare function wl_dispatch_event(eventName: string, eventValue: WLValue): void;
+declare function wl_dispatch_event(this: void, eventName: string, eventValue: WLValue): void;
 
 /**
  * Dispatches an event just like any other prop can using the event system, except it will only send it to 'sandboxObject'. As the parameters suggest, 'eventName' would be the name of the event to be fired, and 'eventValue' would be the value (or parameter) of the event.
@@ -473,7 +473,7 @@ declare function wl_dispatch_event(eventName: string, eventValue: WLValue): void
  * @param eventValue - The value or parameter of the event.
  * @param sandboxObject - The sandbox object to which the event should be sent.
  */
-declare function wl_dispatch_event_to_object(eventName: string, eventValue: WLValue, sandboxObject: WLSandboxObject): void;
+declare function wl_dispatch_event_to_object(this: void, eventName: string, eventValue: WLValue, sandboxObject: WLSandboxObject): void;
 
 /**
  * When using the event system, some receivers require option vector strings as parameters (for example, setting the start value on a Transformer prop). This is just a helper function to create only the vector part of an event parameter. If you want the full option vector string, see wl_make_option_vector_string().
@@ -493,7 +493,7 @@ declare function wl_dispatch_event_to_object(eventName: string, eventValue: WLVa
  * @param args - Either x, y, and z coordinates, or a vector with x, y, and z components.
  * @returns The created vector string.
  */
-declare function wl_make_vector_string(...args: [x: number, y: number, z: number] | [vector: WLVector]): WLVectorString;
+declare function wl_make_vector_string(this: void, ...args: [x: number, y: number, z: number] | [vector: WLVector]): WLVectorString;
 
 /**
  * When using the event system, some receivers require option vector strings as parameters (for example, setting the start value on a Transformer prop). This is just a helper function to create these option vector strings.
@@ -514,7 +514,7 @@ declare function wl_make_vector_string(...args: [x: number, y: number, z: number
  * @param args - Either x, y, and z coordinates, or a vector with x, y, and z components.
  * @returns The created option vector string.
  */
-declare function wl_make_option_vector_string(optionName: string, ...args: [x: number, y: number, z: number] | [vector: WLVector]): WLOptionVectorString;
+declare function wl_make_option_vector_string(this: void, optionName: string, ...args: [x: number, y: number, z: number] | [vector: WLVector]): WLOptionVectorString;
 
 /**
  * When using the event system, some receivers require option color strings as parameters (for example, setting the color of a prototype shape). This is just a helper function to create only the color part of an event parameter. If you want the full option color string, see wl_make_option_color_string().
@@ -534,7 +534,7 @@ declare function wl_make_option_vector_string(optionName: string, ...args: [x: n
  * @param args - Either red, green, blue, and alpha color components, or a color vector with these components.
  * @returns The created color string.
  */
-declare function wl_make_color_string(...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLColorString;
+declare function wl_make_color_string(this: void, ...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLColorString;
 
 /**
  * When using the event system, some receivers require option color strings as parameters (for example, setting the color on a prototype shape). This is just a helper function to create these option color strings.
@@ -555,7 +555,7 @@ declare function wl_make_color_string(...args: [r: number, g: number, b: number,
  * @param args - Either red, green, blue, and alpha color components, or a color vector with these components.
  * @returns The created option color string.
  */
-declare function wl_make_option_color_string(optionName: string, ...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLOptionColorString;
+declare function wl_make_option_color_string(this: void, optionName: string, ...args: [r: number, g: number, b: number, a: number] | [color: WLColor]): WLOptionColorString;
 
 /**
  * Unlike wl_make_vector_string, this function does not create a single string containing all values. Instead, it returns a table with x, y and z set to the given parameter values.
@@ -576,7 +576,7 @@ declare function wl_make_option_color_string(optionName: string, ...args: [r: nu
  * @param z - The z component of the vector.
  * @returns The created vector.
  */
-declare function wl_make_vector(x: number, y: number, z: number): WLVector;
+declare function wl_make_vector(this: void, x: number, y: number, z: number): WLVector;
 
 /**
  * Unlike wl_make_color_string, this function does not create a single string containing all values. Instead, it returns a table with r, g, b and a set to the given parameter values.
@@ -599,7 +599,7 @@ declare function wl_make_vector(x: number, y: number, z: number): WLVector;
  * @param a - The alpha component of the color (0-1).
  * @returns The created color.
  */
-declare function wl_make_color(r: number, g: number, b: number, a: number): WLColor;
+declare function wl_make_color(this: void, r: number, g: number, b: number, a: number): WLColor;
 
 /**
  * This will cast an ray from the given location 'originVector' in the direction of 'directionVector' with a max distance of 'maxDistance'. If the ray hits anything on it's path, it will add useful hit information into a the returned RayCastHit table.
@@ -629,7 +629,7 @@ declare function wl_make_color(r: number, g: number, b: number, a: number): WLCo
  * @param maxDistance - The maximum distance the ray can travel.
  * @returns Information about the raycast hit in the form of a RayCastHit object.
  */
-declare function wl_raycast(originVector: WLVector, directionVector: WLVector, maxDistance: number): WLRayCastHit;
+declare function wl_raycast(this: void, originVector: WLVector, directionVector: WLVector, maxDistance: number): WLRayCastHit;
 
 /**
  * This functions return the time since the last frame, in seconds. This is useful if you want to build functionality that is not dependent on the framerate, like moving an object forwards by a constant value.
@@ -647,7 +647,7 @@ declare function wl_raycast(originVector: WLVector, directionVector: WLVector, m
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_delta_time | View online documentation}
  * @returns The time in seconds since the last frame.
  */
-declare function wl_get_delta_time(): number;
+declare function wl_get_delta_time(this: void, ): number;
 
 /**
  * Returns the current player object.
@@ -663,7 +663,7 @@ declare function wl_get_delta_time(): number;
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_player_object | View online documentation}
  * @returns The current player object.
  */
-declare function wl_get_player_object(): WLSandboxObject;
+declare function wl_get_player_object(this: void, ): WLSandboxObject;
 
 /**
  * Returns the name of the sandbox object. This is the same name as the one you can see in the outliner.
@@ -681,7 +681,7 @@ declare function wl_get_player_object(): WLSandboxObject;
  * @param sandboxObject - The sandbox object to get the name for.
  * @returns The name of the sandbox object.
  */
-declare function wl_get_object_name(sandboxObject: WLSandboxObject): string;
+declare function wl_get_object_name(this: void, sandboxObject: WLSandboxObject): string;
 
 /**
  * Returns the forward direction vector of the given 'sandboxObject'.
@@ -699,7 +699,7 @@ declare function wl_get_object_name(sandboxObject: WLSandboxObject): string;
  * @param sandboxObject - The sandbox object to get the forward vector for.
  * @returns The forward direction vector.
  */
-declare function wl_get_object_forward_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_forward_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the right direction vector of the given 'sandboxObject'.
@@ -717,7 +717,7 @@ declare function wl_get_object_forward_vector(sandboxObject: WLSandboxObject): W
  * @param sandboxObject - The sandbox object to get the right vector for.
  * @returns The right direction vector.
  */
-declare function wl_get_object_right_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_right_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the up direction vector of the given 'sandboxObject'.
@@ -735,7 +735,7 @@ declare function wl_get_object_right_vector(sandboxObject: WLSandboxObject): WLV
  * @param sandboxObject - The sandbox object to get the up vector for.
  * @returns The up direction vector.
  */
-declare function wl_get_object_up_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_up_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the back direction vector of the given 'sandboxObject'.
@@ -753,7 +753,7 @@ declare function wl_get_object_up_vector(sandboxObject: WLSandboxObject): WLVect
  * @param sandboxObject - The sandbox object to get the back vector for.
  * @returns The back direction vector.
  */
-declare function wl_get_object_back_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_back_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the left direction vector of the given 'sandboxObject'.
@@ -771,7 +771,7 @@ declare function wl_get_object_back_vector(sandboxObject: WLSandboxObject): WLVe
  * @param sandboxObject - The sandbox object to get the left vector for.
  * @returns The left direction vector.
  */
-declare function wl_get_object_left_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_left_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Returns the down direction vector of the given 'sandboxObject'.
@@ -789,7 +789,7 @@ declare function wl_get_object_left_vector(sandboxObject: WLSandboxObject): WLVe
  * @param sandboxObject - The sandbox object to get the down vector for.
  * @returns The down direction vector.
  */
-declare function wl_get_object_down_vector(sandboxObject: WLSandboxObject): WLVector;
+declare function wl_get_object_down_vector(this: void, sandboxObject: WLSandboxObject): WLVector;
 
 /**
  * Adds 'vectorA' and 'vectorB' together component wise, or alternatively adds 'vectorA' and 'numB' together, meaning 'numB' is added to all x, y and z components of the vector.
@@ -811,7 +811,7 @@ declare function wl_get_object_down_vector(sandboxObject: WLSandboxObject): WLVe
  * @param b - Either a second vector to add or a number to add to each component.
  * @returns The resulting vector after addition.
  */
-declare function wl_vector_add(vectorA: WLVector, b: WLVector | number): WLVector;
+declare function wl_vector_add(this: void, vectorA: WLVector, b: WLVector | number): WLVector;
 
 /**
  * Subtracts 'vectorB' from 'vectorA' component wise, or alternatively subtracts 'numB' from 'vectorA', meaning 'numB' is subtracted from all x, y and z components of the vector.
@@ -833,7 +833,7 @@ declare function wl_vector_add(vectorA: WLVector, b: WLVector | number): WLVecto
  * @param vectorB - Either a second vector to subtract or a number to subtract from each component.
  * @returns The resulting vector after subtraction.
  */
-declare function wl_vector_subtract(vectorA: WLVector, vectorB: WLVector | number): WLVector;
+declare function wl_vector_subtract(this: void, vectorA: WLVector, vectorB: WLVector | number): WLVector;
 
 /**
  * Multiplies 'vectorA' and 'vectorB' together component wise, or alternatively multiplies 'vectorA' and 'numB' together, meaning each x, y and z component is multiplied with 'numB'.
@@ -855,7 +855,7 @@ declare function wl_vector_subtract(vectorA: WLVector, vectorB: WLVector | numbe
  * @param vectorB - Either a second vector to multiply with or a number to multiply with each component.
  * @returns The resulting vector after multiplication.
  */
-declare function wl_vector_multiply(vectorA: WLVector, vectorB: WLVector | number): WLVector;
+declare function wl_vector_multiply(this: void, vectorA: WLVector, vectorB: WLVector | number): WLVector;
 
 /**
  * Divides 'vectorB' from 'vectorA' component wise, or alternatively divides 'numB' from 'vectorA', meaning 'numB' is divided from all x, y and z components of the vector.
@@ -877,7 +877,7 @@ declare function wl_vector_multiply(vectorA: WLVector, vectorB: WLVector | numbe
  * @param vectorB - Either a second vector to divide by or a number to divide each component by.
  * @returns The resulting vector after division.
  */
-declare function wl_vector_divide(vectorA: WLVector, vectorB: WLVector | number): WLVector;
+declare function wl_vector_divide(this: void, vectorA: WLVector, vectorB: WLVector | number): WLVector;
 
 /**
  * Normalizes the given vector 'vector', meaning the direction will remain the same, but the length of the vector will be exaclty 1 centimeter
@@ -895,7 +895,7 @@ declare function wl_vector_divide(vectorA: WLVector, vectorB: WLVector | number)
  * @param vector - The vector to be normalized.
  * @returns The normalized vector.
  */
-declare function wl_vector_normalize(vector: WLVector): WLVector;
+declare function wl_vector_normalize(this: void, vector: WLVector): WLVector;
 
 /**
  * Calculates the dot product between 'vectorA' and 'vectorB', meaning all x, y, z components are multiplied component wise and the resulting components are summed together.
@@ -915,7 +915,7 @@ declare function wl_vector_normalize(vector: WLVector): WLVector;
  * @param vectorB - The second vector.
  * @returns The dot product value.
  */
-declare function wl_vector_dot(vectorA: WLVector, vectorB: WLVector): number;
+declare function wl_vector_dot(this: void, vectorA: WLVector, vectorB: WLVector): number;
 
 /**
  * Calculates the cross product between 'vectorA' and 'vectorB', meaning it finds a vector that is perpendicular to both 'vectorA' and 'vectorB'.
@@ -935,7 +935,7 @@ declare function wl_vector_dot(vectorA: WLVector, vectorB: WLVector): number;
  * @param vectorB - The second vector.
  * @returns The resulting cross product vector.
  */
-declare function wl_vector_cross(vectorA: WLVector, vectorB: WLVector): WLVector;
+declare function wl_vector_cross(this: void, vectorA: WLVector, vectorB: WLVector): WLVector;
 
 /**
  * Calculates the reflected vector of 'vectorA' bouncing off a surface with normal vector 'vectorB'.
@@ -955,7 +955,7 @@ declare function wl_vector_cross(vectorA: WLVector, vectorB: WLVector): WLVector
  * @param vectorB - The normal vector of the surface.
  * @returns The reflected vector.
  */
-declare function wl_vector_reflect(vectorA: WLVector, vectorB: WLVector): WLVector;
+declare function wl_vector_reflect(this: void, vectorA: WLVector, vectorB: WLVector): WLVector;
 
 /**
  * Returns the length of the vector in centimeters.
@@ -973,7 +973,7 @@ declare function wl_vector_reflect(vectorA: WLVector, vectorB: WLVector): WLVect
  * @param vector - The vector whose length is to be calculated.
  * @returns The length of the vector.
  */
-declare function wl_vector_length(vector: WLVector): number;
+declare function wl_vector_length(this: void, vector: WLVector): number;
 
 /**
  * Projects 'vectorA' onto 'vectorB' and returns the projected vector.
@@ -993,7 +993,7 @@ declare function wl_vector_length(vector: WLVector): number;
  * @param vectorB - The vector onto which the projection will be performed.
  * @returns The projected vector.
  */
-declare function wl_vector_project(vectorA: WLVector, vectorB: WLVector): WLVector;
+declare function wl_vector_project(this: void, vectorA: WLVector, vectorB: WLVector): WLVector;
 
 /**
  * Projects 'vectorA' onto a plane with normal 'vectorB' and returns the projected vector.
@@ -1013,7 +1013,7 @@ declare function wl_vector_project(vectorA: WLVector, vectorB: WLVector): WLVect
  * @param vectorB - The normal vector of the plane onto which the projection will be performed.
  * @returns The projected vector.
  */
-declare function wl_vector_plane_project(vectorA: WLVector, vectorB: WLVector): WLVector;
+declare function wl_vector_plane_project(this: void, vectorA: WLVector, vectorB: WLVector): WLVector;
 
 /**
  * Prints a vector to the log. This is a helper function to aid debugging or visualizing your vectors.
@@ -1029,7 +1029,7 @@ declare function wl_vector_plane_project(vectorA: WLVector, vectorB: WLVector): 
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_print_vector | View online documentation}
  * @param vector - The vector to be printed.
  */
-declare function wl_print_vector(vector: WLVector): void;
+declare function wl_print_vector(this: void, vector: WLVector): void;
 
 /**
  * Prints a color to the log. This is a helper function to aid debugging or visualizing your colors.
@@ -1045,7 +1045,7 @@ declare function wl_print_vector(vector: WLVector): void;
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_print_color | View online documentation}
  * @param color - The color to be printed.
  */
-declare function wl_print_color(color: WLColor): void;
+declare function wl_print_color(this: void, color: WLColor): void;
 
 /**
  * Prints the entire 'table' to the log using json syntax. This is a helper function to aid debugging or visualizing your custom lua tables.
@@ -1066,7 +1066,7 @@ declare function wl_print_color(color: WLColor): void;
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_print_table | View online documentation}
  * @param table - The table to be printed.
  */
-declare function wl_print_table(table: object): void;
+declare function wl_print_table(this: void, table: object): void;
 
 /**
  * Returns the float value of the 'optionID' option of the given 'sandboxObject'.
@@ -1086,7 +1086,7 @@ declare function wl_print_table(table: object): void;
  * @param optionName - The name of the option.
  * @returns The float value of the option.
  */
-declare function wl_get_object_float_option(sandboxObject: WLSandboxObject, optionName: string): number;
+declare function wl_get_object_float_option(this: void, sandboxObject: WLSandboxObject, optionName: string): number;
 
 /**
  * Returns the integer value of the 'optionID' option of the given 'sandboxObject'.
@@ -1106,7 +1106,7 @@ declare function wl_get_object_float_option(sandboxObject: WLSandboxObject, opti
  * @param optionName - The name of the option.
  * @returns The integer value of the option.
  */
-declare function wl_get_object_integer_option(sandboxObject: WLSandboxObject, optionName: string): number;
+declare function wl_get_object_integer_option(this: void, sandboxObject: WLSandboxObject, optionName: string): number;
 
 /**
  * Returns the string value of the 'optionID' option of the given 'sandboxObject'.
@@ -1126,7 +1126,7 @@ declare function wl_get_object_integer_option(sandboxObject: WLSandboxObject, op
  * @param optionName - The name of the option.
  * @returns The string value of the option.
  */
-declare function wl_get_object_string_option(sandboxObject: WLSandboxObject, optionName: string): string;
+declare function wl_get_object_string_option(this: void, sandboxObject: WLSandboxObject, optionName: string): string;
 
 /**
  * Returns the bool value of the 'optionID' option of the given 'sandboxObject'.
@@ -1146,7 +1146,7 @@ declare function wl_get_object_string_option(sandboxObject: WLSandboxObject, opt
  * @param optionName - The name of the option.
  * @returns The boolean value of the option.
  */
-declare function wl_get_object_bool_option(sandboxObject: WLSandboxObject, optionName: string): boolean;
+declare function wl_get_object_bool_option(this: void, sandboxObject: WLSandboxObject, optionName: string): boolean;
 
 /**
  * Returns the vector value of the 'optionID' option of the given 'sandboxObject'.
@@ -1166,7 +1166,7 @@ declare function wl_get_object_bool_option(sandboxObject: WLSandboxObject, optio
  * @param optionName - The name of the option.
  * @returns The vector value of the option.
  */
-declare function wl_get_object_vector_option(sandboxObject: WLSandboxObject, optionName: string): WLVector;
+declare function wl_get_object_vector_option(this: void, sandboxObject: WLSandboxObject, optionName: string): WLVector;
 
 /**
  * Returns the color value of the 'optionID' option of the given 'sandboxObject'.
@@ -1186,7 +1186,7 @@ declare function wl_get_object_vector_option(sandboxObject: WLSandboxObject, opt
  * @param optionName - The name of the option.
  * @returns The color value of the option.
  */
-declare function wl_get_object_color_option(sandboxObject: WLSandboxObject, optionName: string): WLColor;
+declare function wl_get_object_color_option(this: void, sandboxObject: WLSandboxObject, optionName: string): WLColor;
 
 /**
  * Sets the float value of the 'optionID' option of the given 'sandboxObject'.
@@ -1205,7 +1205,7 @@ declare function wl_get_object_color_option(sandboxObject: WLSandboxObject, opti
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_float_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_float_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Sets the integer value of the 'optionID' option of the given 'sandboxObject'.
@@ -1224,7 +1224,7 @@ declare function wl_set_object_float_option(sandboxObject: WLSandboxObject, opti
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_integer_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_integer_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Sets the string value of the 'optionID' option of the given 'sandboxObject'.
@@ -1243,7 +1243,7 @@ declare function wl_set_object_integer_option(sandboxObject: WLSandboxObject, op
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_string_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_string_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Sets the bool value of the 'optionID' option of the given 'sandboxObject'.
@@ -1262,7 +1262,7 @@ declare function wl_set_object_string_option(sandboxObject: WLSandboxObject, opt
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_bool_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_bool_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Sets the vector value of the 'optionID' option of the given 'sandboxObject'.
@@ -1281,7 +1281,7 @@ declare function wl_set_object_bool_option(sandboxObject: WLSandboxObject, optio
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_vector_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_vector_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Sets the color value of the 'optionID' option of the given 'sandboxObject'.
@@ -1300,7 +1300,7 @@ declare function wl_set_object_vector_option(sandboxObject: WLSandboxObject, opt
  * @param optionName - The name of the option.
  * @param optionValue - The value to set for the option.
  */
-declare function wl_set_object_color_option(sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
+declare function wl_set_object_color_option(this: void, sandboxObject: WLSandboxObject, optionName: string, optionValue: WLValue): void;
 
 /**
  * Returns the object parent of the given 'sandboxObject'.
@@ -1318,7 +1318,7 @@ declare function wl_set_object_color_option(sandboxObject: WLSandboxObject, opti
  * @param sandboxObject - The sandbox object for which to retrieve the parent.
  * @returns The parent object of the sandbox object.
  */
-declare function wl_get_object_parent(sandboxObject: WLSandboxObject): WLSandboxObject;
+declare function wl_get_object_parent(this: void, sandboxObject: WLSandboxObject): WLSandboxObject;
 
 /**
  * Returns the object parent of the currently executing Lua prop.
@@ -1334,7 +1334,7 @@ declare function wl_get_object_parent(sandboxObject: WLSandboxObject): WLSandbox
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_object_self_parent | View online documentation}
  * @returns The parent object of the currently executing Lua prop.
  */
-declare function wl_get_object_self_parent(): WLSandboxObject;
+declare function wl_get_object_self_parent(this: void, ): WLSandboxObject;
 
 /**
  * Returns an array of all the direct children the 'sandboxObject' has. If you also want to retrieve children of children, use wl_get_object_children_recursive instead.
@@ -1356,7 +1356,7 @@ declare function wl_get_object_self_parent(): WLSandboxObject;
  * @param sandboxObject - The sandbox object for which to retrieve the children.
  * @returns An array of sandbox objects that are the direct children of the specified object.
  */
-declare function wl_get_object_children(sandboxObject: WLSandboxObject): WLSandboxObject[];
+declare function wl_get_object_children(this: void, sandboxObject: WLSandboxObject): WLSandboxObject[];
 
 /**
  * Returns an array of all the direct children the currently executing Lua prop has. If you also want to retrieve children of children, use wl_get_object_self_children_recursive instead.
@@ -1377,7 +1377,7 @@ declare function wl_get_object_children(sandboxObject: WLSandboxObject): WLSandb
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_object_self_children | View online documentation}
  * @returns An array of SandboxObject representing the children of the current Lua prop.
  */
-declare function wl_get_object_self_children(): WLSandboxObject[];
+declare function wl_get_object_self_children(this: void, ): WLSandboxObject[];
 
 /**
  * Returns an array of all the children the 'sandboxObject' has. If you only want to retrieve the direct children of the object, use wl_get_object_children instead.
@@ -1399,7 +1399,7 @@ declare function wl_get_object_self_children(): WLSandboxObject[];
  * @param sandboxObject The sandbox object whose children to retrieve.
  * @returns An array of SandboxObject representing the recursive children of the specified object.
  */
-declare function wl_get_object_children_recursive(sandboxObject: WLSandboxObject): WLSandboxObject[];
+declare function wl_get_object_children_recursive(this: void, sandboxObject: WLSandboxObject): WLSandboxObject[];
 
 /**
  * Returns an array of all the children the currently executing Lua prop has. If you only want to retrieve the direct children of the object, use wl_get_object_self_children instead.
@@ -1420,7 +1420,7 @@ declare function wl_get_object_children_recursive(sandboxObject: WLSandboxObject
  * {@link https://wildlife.adult/Documentation/Lua/v1/WildLifeLuaDocumentation.html#wl_get_object_self_children_recursive | View online documentation}
  * @returns An array of SandboxObject representing the recursive children of the current Lua prop.
  */
-declare function wl_get_object_self_children_recursive(): WLSandboxObject[];
+declare function wl_get_object_self_children_recursive(this: void, ): WLSandboxObject[];
 
 /**
  * Similar to wl_get_object, but instead of returning the first instance of a sandbox object named 'objectName', it will instead return an array of all sandbox objects with that name.
@@ -1441,7 +1441,7 @@ declare function wl_get_object_self_children_recursive(): WLSandboxObject[];
  * @param objectName The name of the sandbox objects to retrieve.
  * @returns An array of SandboxObject with the specified name.
  */
-declare function wl_get_objects(objectName: string): WLSandboxObject[];
+declare function wl_get_objects(this: void, objectName: string): WLSandboxObject[];
 
 /**
  * Adds an event to an event dispatcher on 'sandboxObject'. The 'dispatcherID' is the ID of the dispatcher you want to add the event to.
@@ -1461,7 +1461,7 @@ declare function wl_get_objects(objectName: string): WLSandboxObject[];
  * @param eventName The name of the event to add.
  * @param eventValue The value of the event to add.
  */
-declare function wl_add_event_to_dispatcher(sandboxObject: WLSandboxObject, dispatcherID: string, eventName: string, eventValue: WLValue): void;
+declare function wl_add_event_to_dispatcher(this: void, sandboxObject: WLSandboxObject, dispatcherID: string, eventName: string, eventValue: WLValue): void;
 
 /**
  * Removes an event from an event dispatcher on 'sandboxObject'. The 'dispatcherID' is the ID of the dispatcher you want to remove the event from.
@@ -1480,7 +1480,7 @@ declare function wl_add_event_to_dispatcher(sandboxObject: WLSandboxObject, disp
  * @param dispatcherID The ID of the dispatcher to remove the event from.
  * @param eventName The name of the event to remove.
  */
-declare function wl_remove_event_from_dispatcher(sandboxObject: WLSandboxObject, dispatcherID: string, eventName: string): void;
+declare function wl_remove_event_from_dispatcher(this: void, sandboxObject: WLSandboxObject, dispatcherID: string, eventName: string): void;
 
 /**
  * Adds an event to an event receiver on 'sandboxObject'. The 'receiverID' is the ID of the receiver you want to add the event to.
@@ -1500,7 +1500,7 @@ declare function wl_remove_event_from_dispatcher(sandboxObject: WLSandboxObject,
  * @param eventName The name of the event to add.
  * @param eventValue The value of the event to add.
  */
-declare function wl_add_event_to_receiver(sandboxObject: WLSandboxObject, receiverID: string, eventName: string, eventValue: WLValue): void;
+declare function wl_add_event_to_receiver(this: void, sandboxObject: WLSandboxObject, receiverID: string, eventName: string, eventValue: WLValue): void;
 
 /**
  * Removes an event from an event receiver on 'sandboxObject'. The 'receiverID' is the ID of the receiver you want to remove the event from.
@@ -1519,7 +1519,7 @@ declare function wl_add_event_to_receiver(sandboxObject: WLSandboxObject, receiv
  * @param receiverID The ID of the receiver to remove the event from.
  * @param eventName The name of the event to remove.
  */
-declare function wl_remove_event_from_receiver(sandboxObject: WLSandboxObject, receiverID: string, eventName: string): void;
+declare function wl_remove_event_from_receiver(this: void, sandboxObject: WLSandboxObject, receiverID: string, eventName: string): void;
 
 /**
  * Returns whether the given 'sandboxObject' is currently visible or not.
@@ -1537,7 +1537,7 @@ declare function wl_remove_event_from_receiver(sandboxObject: WLSandboxObject, r
  * @param sandboxObject The sandbox object to check visibility for.
  * @returns True if the object is visible, otherwise false.
  */
-declare function wl_get_object_visibility(sandboxObject: WLSandboxObject): boolean;
+declare function wl_get_object_visibility(this: void, sandboxObject: WLSandboxObject): boolean;
 
 /**
  * This function can be used to set the visibility of the given 'sandboxObject' to the value of 'newVisibility'
@@ -1554,7 +1554,7 @@ declare function wl_get_object_visibility(sandboxObject: WLSandboxObject): boole
  * @param sandboxObject The sandbox object to set visibility for.
  * @param newVisibility The new visibility value to set.
  */
-declare function wl_set_object_visibility(sandboxObject: WLSandboxObject, newVisibility: boolean): void;
+declare function wl_set_object_visibility(this: void, sandboxObject: WLSandboxObject, newVisibility: boolean): void;
 
 /**
  * Returns whether the given 'sandboxObject' has it's event dispatchers enabled or not.
@@ -1572,7 +1572,7 @@ declare function wl_set_object_visibility(sandboxObject: WLSandboxObject, newVis
  * @param sandboxObject The sandbox object to check dispatchers for.
  * @returns True if the dispatchers are enabled, otherwise false.
  */
-declare function wl_get_object_dispatchers_enabled(sandboxObject: WLSandboxObject): boolean;
+declare function wl_get_object_dispatchers_enabled(this: void, sandboxObject: WLSandboxObject): boolean;
 
 /**
  * This function can be used to enable or disable the event dispatchers of the given 'sandboxObject'.
@@ -1589,7 +1589,7 @@ declare function wl_get_object_dispatchers_enabled(sandboxObject: WLSandboxObjec
  * @param sandboxObject The sandbox object to set dispatchers for.
  * @param newEnabled The new enabled value to set.
  */
-declare function wl_set_object_dispatchers_enabled(sandboxObject: WLSandboxObject, newEnabled: boolean): void;
+declare function wl_set_object_dispatchers_enabled(this: void, sandboxObject: WLSandboxObject, newEnabled: boolean): void;
 
 /**
  * Returns whether the given 'sandboxObject' has it's event receivers enabled or not.
@@ -1607,7 +1607,7 @@ declare function wl_set_object_dispatchers_enabled(sandboxObject: WLSandboxObjec
  * @param sandboxObject The sandbox object to check receivers for.
  * @returns True if the receivers are enabled, otherwise false.
  */
-declare function wl_get_object_receivers_enabled(sandboxObject: WLSandboxObject): boolean;
+declare function wl_get_object_receivers_enabled(this: void, sandboxObject: WLSandboxObject): boolean;
 
 /**
  * This function can be used to enable or disable the event receivers of the given 'sandboxObject'.
@@ -1624,7 +1624,7 @@ declare function wl_get_object_receivers_enabled(sandboxObject: WLSandboxObject)
  * @param sandboxObject The sandbox object to set receivers for.
  * @param newEnabled The new enabled value to set.
  */
-declare function wl_set_object_receivers_enabled(sandboxObject: WLSandboxObject, newEnabled: boolean): void;
+declare function wl_set_object_receivers_enabled(this: void, sandboxObject: WLSandboxObject, newEnabled: boolean): void;
 
 /**
  * This function can be used to execute lua code at a later point in time. As the name suggests, the 'delaySeconds' parameter defines the amount of seconds to wait until executing the code in 'luaCodeString'.
@@ -1644,7 +1644,7 @@ declare function wl_set_object_receivers_enabled(sandboxObject: WLSandboxObject,
  * @param delaySeconds The delay in seconds before executing the Lua code.
  * @param luaCodeString The Lua code to execute.
  */
-declare function wl_execute_delayed(delaySeconds: number, luaCodeString: string): void;
+declare function wl_execute_delayed(this: void, delaySeconds: number, luaCodeString: string): void;
 
 /**
  * This function can be used to save custom data onto the hard drive for later use. The save location will always be in the "%localappdata%/WildLifeC/Saved/SandboxSaveGames/CustomSaves/" folder.
@@ -1674,7 +1674,7 @@ declare function wl_execute_delayed(delaySeconds: number, luaCodeString: string)
  * @param fileName The name of the file to save the data to.
  * @returns True if the data was successfully saved, otherwise false.
  */
-declare function wl_data_save(data: JsonData, fileName: string): boolean;
+declare function wl_data_save(this: void, data: JsonData, fileName: string): boolean;
 
 /**
  * This function allows you to load save data from the "%localappdata%/WildLifeC/Saved/SandboxSaveGames/CustomSaves/" folder. If the file failed to load, the function will return 'nil' instead.
@@ -1695,7 +1695,7 @@ declare function wl_data_save(data: JsonData, fileName: string): boolean;
  * @param fileName The name of the file to load the data from.
  * @returns The loaded data as a JSON object, or null if loading failed.
  */
-declare function wl_data_load(fileName: string): JsonData;
+declare function wl_data_load(this: void, fileName: string): JsonData;
 
 /**
  * This functions allows you to delete a save file in the "%localappdata%/WildLifeC/Saved/SandboxSaveGames/CustomSaves/" folder. It will return either 'true' or 'false', depending on the success or failure of the deletion.
@@ -1717,7 +1717,7 @@ declare function wl_data_load(fileName: string): JsonData;
  * @param fileName The name of the file to delete.
  * @returns True if the file was successfully deleted, otherwise false.
  */
-declare function wl_data_delete(fileName: string): boolean;
+declare function wl_data_delete(this: void, fileName: string): boolean;
 
 /**
  * This function allows you to check whether a save file exists before trying to load, save or delete it.
@@ -1739,7 +1739,7 @@ declare function wl_data_delete(fileName: string): boolean;
  * @param fileName The name of the file to check.
  * @returns True if the file exists, otherwise false.
  */
-declare function wl_data_exists(fileName: string): boolean;
+declare function wl_data_exists(this: void, fileName: string): boolean;
 
 /**
  * This function allows you to load another sandbox scene. The scene needs to be compatible with the current level, for example, a Showroom map could not be loaded while in the Wild Life map. Only the scene name needs to be specified (without the .json extension).
@@ -1763,4 +1763,4 @@ declare function wl_data_exists(fileName: string): boolean;
  * @param loadAdditively Whether to load the scene additively or not.
  * @returns True if the scene was successfully loaded, otherwise false.
  */
-declare function wl_load_scene(sceneName: string, loadAdditively: boolean): boolean;
+declare function wl_load_scene(this: void, sceneName: string, loadAdditively: boolean): boolean;
